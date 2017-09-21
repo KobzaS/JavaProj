@@ -11,40 +11,40 @@ public class DewPoint
 	// called from acceptselection().
 	// Here you accept the various values to calculate the dew point
 	// Hint: a do/while loop. The main exit character here is 'e'/'E'	
-	
+	Scanner stdin = new Scanner(System.in);
 	
 	String choice = "";
 
-	Accept stdin = new Accept();
+	
     double begTemp, endTemp;
 	int relHum;
 
 	do {
 		System.out.println ("Please enter the starting air temperature in celsius; it must be above -4.5c: ");
-		begTemp = stdin.AcceptInputDouble();
+		begTemp = stdin.nextDouble();
         if (begTemp <= -4.5){
 			do {
 				System.out.println ("The starting air temp must be above -4.5c please re-enter ");
 				System.out.println ("Please enter the starting air temperature in celsius; it must be above -4.5c: ");
-				begTemp = stdin.AcceptInputDouble();
+				begTemp = stdin.nextDouble();
 			} while (begTemp <= -4.5);
 		}
 		System.out.println ("Please enter the ending air temperature in celsius; it must be below 145c: ");
-		endTemp = stdin.AcceptInputDouble();
+		endTemp = stdin.nextDouble();
 		if (endTemp >= 145){
 			do {
 				System.out.println ("The ending air temperature must be below 145 please re-enter ");
 				System.out.println ("Please enter the ending air temperature in celsius; it must be below 145c: ");
-				endTemp = stdin.AcceptInputDouble();
+				endTemp = stdin.nextDouble();
 			} while (endTemp >= 145);
 		}
 		System.out.println ("Please enter the relative humidity as an integer from 5% to 9%: ");
-		relHum = stdin.AcceptInputInt();
+		relHum = stdin.nextInt();
 		if (relHum < 5 || relHum > 9){
 			do{
 			System.out.println ("Relative humidity must be between 5% and 9%. Please re-enter");
 			System.out.println ("Please enter the relative humidity as an integer from 5% to 9%: ");
-			relHum = stdin.AcceptInputInt();
+			relHum = stdin.nextInt();
 			} while(relHum < 5 || relHum > 9);
 		}
       choice = "e";
@@ -124,9 +124,8 @@ public class DewPoint
 	double hum5, hum6, hum7, hum8, hum9, transTemp;
 	final String DEGREE = "\u00b0";
    String curTemp;
-	String form5, form6, form7, form8, form9;
-	char exit;
-	Accept stdin = new Accept();
+	String exit, form5, form6, form7, form8, form9;
+	Scanner stdin = new Scanner(System.in);
 	DecimalFormat decFor = new DecimalFormat("###0.0");
    
    if (begTemp > endTemp)
@@ -218,15 +217,13 @@ public class DewPoint
 		}
 
 	}
-	Menu callMenu = new Menu();
 	System.out.println("Press \"e\" to exit, or hit any other letter and enter to continue");
-	exit = stdin.AcceptInputChar();
-	if (exit == 'e')
+	exit = stdin.nextLine();
+	/*if (exit == "e")
 	{
-		callMenu.mainmenu();
-		callMenu.acceptselection();
-	}
-	else if (exit != 'e')
+
+	}*/
+	if (exit != "e")
 	{
 		dewPoint_accept();
 	}
