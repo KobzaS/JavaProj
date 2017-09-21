@@ -121,40 +121,50 @@ public class DewPoint
     {
 	//Here you display the output in a tabular format 
 	//You will need to use a nested for loop
-	double hum5, hum6, hum7, hum8, hum9;
+	double hum5, hum6, hum7, hum8, hum9, transTemp;
 	final String DEGREE = "\u00b0";
+   String curTemp;
 	String exit, form5, form6, form7, form8, form9;
 	Scanner stdin = new Scanner(System.in);
 	DecimalFormat decFor = new DecimalFormat("###0.0");
+   
+   if (begTemp > endTemp)
+   {
+      transTemp = begTemp;
+      begTemp = endTemp;
+      endTemp = transTemp;  
 
+   }
 	
 	if (relHum == 5)
 	{
-		System.out.println("\t5%");
+		System.out.println("Temp\t\t5%");
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
-          	form5 = decFor.format(hum5);
-			System.out.println(i+DEGREE+"C\t\t"+form5);
+         form5 = decFor.format(hum5);
+         curTemp = decFor.format(i);
+			System.out.println(curTemp+DEGREE+"C\t\t"+form5);
 			i += 0.5;
 		}
 		
 	} else if (relHum == 6)
 	{
-		System.out.println("\t\t5%\t\t6%");
+		System.out.println("Temp\t\t5%\t\t6%");
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
 			hum6 = dewPointCalc(i, 6);
 			form5 = decFor.format(hum5);
 			form6 = decFor.format(hum6);
-			System.out.println(i+DEGREE+"C\t\t"+form5+"\t\t"+form6);
+         curTemp = decFor.format(i);
+			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6);
 			i += 0.5;
 		}
 
 	} else if (relHum == 7)
 	{
-		System.out.println("\t\t5%\t\t6%\t\t7%");
+		System.out.println("Temp\t\t5%\t\t6%\t\t7%");
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
@@ -163,13 +173,14 @@ public class DewPoint
 			form5 = decFor.format(hum5);
 			form6 = decFor.format(hum6);
 			form7 = decFor.format(hum7);
-			System.out.println(i+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7);
+         curTemp = decFor.format(i);
+			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7);
 			i += 0.5;
 		}
 
 	} else if (relHum == 8)
 	{
-		System.out.println("\t\t5%\t\t6%\t\t7%\t\t8%");
+		System.out.println("Temp\t\t5%\t\t6%\t\t7%\t\t8%");
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
@@ -180,13 +191,14 @@ public class DewPoint
 			form6 = decFor.format(hum6);
 			form7 = decFor.format(hum7);
 			form8 = decFor.format(hum8);
-			System.out.println(i+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8);
+         curTemp = decFor.format(i);
+			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8);
 			i += 0.5;
 		}
 
 	} else
 	{
-		System.out.println("\t\t5%\t\t6%\t\t7%\t\t8%\t\t9%");
+		System.out.println("Temp\t\t5%\t\t6%\t\t7%\t\t8%\t\t9%");
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
@@ -199,7 +211,8 @@ public class DewPoint
 			form7 = decFor.format(hum7);
 			form8 = decFor.format(hum8);
 			form9 = decFor.format(hum9);
-			System.out.println(i+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8+"\t\t"+form9);
+         curTemp = decFor.format(i);
+			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8+"\t\t"+form9);
 			i += 0.5;
 		}
 
