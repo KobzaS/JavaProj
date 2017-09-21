@@ -1,6 +1,6 @@
 public class Screen
 {
-	public static void scrollscreen(int numscroll)
+	public static void scrollScreen(int numscroll)
     {
       for (int i = 0; i < numscroll; i++){
          //System.out.println(/b);
@@ -10,7 +10,7 @@ public class Screen
 		// depending on what you passed to it    
     }
 
-    public static void scrollscreen(char displaychar, int numchar, int numline)
+    public static void scrollScreen(char displaychar, int numchar, int numline)
     {
        // display a certain number of lines
 		 // using a certain character

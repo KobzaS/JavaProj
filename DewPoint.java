@@ -42,9 +42,9 @@ public class DewPoint
 		relHum = stdin.AcceptInputInt();
 		if (relHum < 5 || relHum > 9){
 			do{
-			System.out.println ("Relative humidity must be between 5% and 9%. Please re-enter");
-			System.out.println ("Please enter the relative humidity as an integer from 5% to 9%: ");
-			relHum = stdin.AcceptInputInt();
+				System.out.println ("Relative humidity must be between 5% and 9%. Please re-enter");
+				System.out.println ("Please enter the relative humidity as an integer from 5% to 9%: ");
+				relHum = stdin.AcceptInputInt();
 			} while(relHum < 5 || relHum > 9);
 		}
       choice = "e";
@@ -61,12 +61,6 @@ public class DewPoint
 		double interMath, expo, tempMath, tempMath2; 
 		double dewTemp = 0;
 		double frac = 0.125;
-      	/*System.out.println(difTemp);
-      	differenceTemp = (int)difTemp;
-		System.out.println(differenceTemp);*/
-		// intermath = relHum/100;
-		//expo = Math.pow(interMath, frac);
-		//dewTemp = (expo * (112 + 0.9*i) + 0.1*i - 112);
       
 		if (relHum == 5)
 		{
@@ -123,19 +117,22 @@ public class DewPoint
 	//You will need to use a nested for loop
 	double hum5, hum6, hum7, hum8, hum9, transTemp;
 	final String DEGREE = "\u00b0";
-   String curTemp;
+    String curTemp;
 	String form5, form6, form7, form8, form9;
 	char exit;
 	Accept stdin = new Accept();
+	Screen scrollScr = new Screen();
 	DecimalFormat decFor = new DecimalFormat("###0.0");
    
-   if (begTemp > endTemp)
-   {
+    if (begTemp > endTemp)
+    {
       transTemp = begTemp;
       begTemp = endTemp;
       endTemp = transTemp;  
 
-   }
+	}
+
+	scrollScr.scrollScreen ('=', 90, 1);
 	
 	if (relHum == 5)
 	{
@@ -143,12 +140,14 @@ public class DewPoint
 		for (double i = begTemp; i < endTemp;)
 		{
 			hum5 = dewPointCalc(i, 5);
-         form5 = decFor.format(hum5);
-         curTemp = decFor.format(i);
+         	form5 = decFor.format(hum5);
+         	curTemp = decFor.format(i);
 			System.out.println(curTemp+DEGREE+"C\t\t"+form5);
 			i += 0.5;
 		}
-		
+		hum5 = dewPointCalc(endTemp, 5);
+		form5 = decFor.format(hum5);
+		System.out.println(endTemp+DEGREE+"C\t\t"+form5);
 	} else if (relHum == 6)
 	{
 		System.out.println("Temp\t\t5%\t\t6%");
@@ -158,10 +157,15 @@ public class DewPoint
 			hum6 = dewPointCalc(i, 6);
 			form5 = decFor.format(hum5);
 			form6 = decFor.format(hum6);
-         curTemp = decFor.format(i);
+         	curTemp = decFor.format(i);
 			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6);
 			i += 0.5;
 		}
+	hum5 = dewPointCalc(endTemp, 5);
+	hum6 = dewPointCalc(endTemp, 6);
+	form5 = decFor.format(hum5);
+	form6 = decFor.format(hum6);
+	System.out.println(endTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6);
 
 	} else if (relHum == 7)
 	{
@@ -174,11 +178,18 @@ public class DewPoint
 			form5 = decFor.format(hum5);
 			form6 = decFor.format(hum6);
 			form7 = decFor.format(hum7);
-         curTemp = decFor.format(i);
+         	curTemp = decFor.format(i);
 			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7);
 			i += 0.5;
 		}
 
+	hum5 = dewPointCalc(endTemp, 5);
+	hum6 = dewPointCalc(endTemp, 6);
+	hum7 = dewPointCalc(endTemp, 7);
+	form5 = decFor.format(hum5);
+	form6 = decFor.format(hum6);
+	form7 = decFor.format(hum7);
+	System.out.println(endTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7);
 	} else if (relHum == 8)
 	{
 		System.out.println("Temp\t\t5%\t\t6%\t\t7%\t\t8%");
@@ -192,11 +203,19 @@ public class DewPoint
 			form6 = decFor.format(hum6);
 			form7 = decFor.format(hum7);
 			form8 = decFor.format(hum8);
-         curTemp = decFor.format(i);
+         	curTemp = decFor.format(i);
 			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8);
 			i += 0.5;
 		}
-
+		hum5 = dewPointCalc(endTemp, 5);
+		hum6 = dewPointCalc(endTemp, 6);
+		hum7 = dewPointCalc(endTemp, 7);
+		hum8 = dewPointCalc(endTemp, 8);
+		form5 = decFor.format(hum5);
+		form6 = decFor.format(hum6);
+		form7 = decFor.format(hum7);
+		form8 = decFor.format(hum8);
+		System.out.println(endTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8);
 	} else
 	{
 		System.out.println("Temp\t\t5%\t\t6%\t\t7%\t\t8%\t\t9%");
@@ -212,31 +231,35 @@ public class DewPoint
 			form7 = decFor.format(hum7);
 			form8 = decFor.format(hum8);
 			form9 = decFor.format(hum9);
-         curTemp = decFor.format(i);
+         	curTemp = decFor.format(i);
 			System.out.println(curTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8+"\t\t"+form9);
 			i += 0.5;
 		}
-
+		hum5 = dewPointCalc(endTemp, 5);
+		hum6 = dewPointCalc(endTemp, 6);
+		hum7 = dewPointCalc(endTemp, 7);
+		hum8 = dewPointCalc(endTemp, 8);
+		hum9 = dewPointCalc(endTemp, 9);
+		form5 = decFor.format(hum5);
+		form6 = decFor.format(hum6);
+		form7 = decFor.format(hum7);
+		form8 = decFor.format(hum8);
+		form9 = decFor.format(hum9);
+		System.out.println(endTemp+DEGREE+"C\t\t"+form5+"\t\t"+form6+"\t\t"+form7+"\t\t"+form8+"\t\t"+form9);
 	}
+
 	Menu callMenu = new Menu();
 	System.out.println("Press \"e\" to exit, or hit any other letter and enter to continue");
 	exit = stdin.AcceptInputChar();
-	if (exit == 'e')
+	if (exit == 'e' || exit == 'E')
 	{
 		callMenu.mainmenu();
 		callMenu.acceptselection();
 	}
-	else if (exit != 'e')
+	else if (exit != 'e' && exit != 'E')
 	{
 		dewPoint_accept();
 	}
 
-	   
 	}
- 
-   public static void main (String Args[])
-   {
-      DewPoint dp = new DewPoint();
-      dp.dewPoint_accept();
-   }  
 }

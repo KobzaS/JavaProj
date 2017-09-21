@@ -41,7 +41,7 @@ class Menu
          else if (check == '1' || check == 'd' || check == 'D'){
             // SELECTION CODE
             terminate = true;
-            scrollscr.scrollscreen('=', 45, 1);
+            scrollscr.scrollScreen('=', 45, 1);
             System.out.println("");
             dew.dewPoint_accept();
             
@@ -49,7 +49,7 @@ class Menu
             check = charin.AcceptInputChar();
             
             if (check == 'e'){
-               scrollscr.scrollscreen(10);
+               scrollscr.scrollScreen(10);
                mainmenu();
                acceptselection();
             }
@@ -61,7 +61,7 @@ class Menu
          }
          
          else {
-            scrollscr.scrollscreen(10);
+            scrollscr.scrollScreen(10);
             
             mainmenu();
             
